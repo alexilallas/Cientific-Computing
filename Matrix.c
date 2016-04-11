@@ -1,17 +1,17 @@
 /*
-Este arquivo Ã© parte do projeto Data Structures
-Este Ã© um software livre; vocÃª pode redistribuÃ­-lo e/ou
-modificÃ¡-lo dentro dos termos da LicenÃ§a PÃºblica Geral GNU como
-publicada pela FundaÃ§Ã£o do Software Livre (FSF); na versÃ£o 3 da
-LicenÃ§a, ou (na sua opiniÃ£o) qualquer versÃ£o.
-Este programa Ã© distribuÃ­do na esperanÃ§a de que possa ser  Ãºtil,
-mas SEM NENHUMA GARANTIA; sem uma garantia implÃ­cita de ADEQUAÃ‡ÃƒO
-a qualquer MERCADO ou APLICAÃ‡ÃƒO EM PARTICULAR. Veja a
-LicenÃ§a PÃºblica Geral GNU para maiores detalhes.
-VocÃª deve ter recebido uma cÃ³pia da LicenÃ§a PÃºblica Geral GNU junto
-com este programa, Se nÃ£o, veja <http://www.gnu.org/licenses/>.
+Este arquivo é parte do projeto Data Structures
+Este é um software livre; você pode redistribuí-lo e/ou
+modificá-lo dentro dos termos da Licença Pública Geral GNU como
+publicada pela Fundação do Software Livre (FSF); na versão 3 da
+Licença, ou (na sua opinião) qualquer versão.
+Este programa é distribuído na esperança de que possa ser  útil,
+mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO
+a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
+Licença Pública Geral GNU para maiores detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU junto
+com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 Arquivo: Matrix.c
-DescriÃ§Ã£o: OperaÃ§Ãµes de multiplicaÃ§Ãµes matriciais para medida de desempenho.
+Descrição: Operações de multiplicações matriciais para medida de desempenho.
 Autor: Alexi Lallas Ribeiro Pereira <alexii2005@hotmail.com>
 */
 
@@ -23,6 +23,7 @@ Autor: Alexi Lallas Ribeiro Pereira <alexii2005@hotmail.com>
 #include <time.h>
 
 int main(void) {
+	
 	start:
 	printf("What the dimension of matrix square ?\n");
 	int dimension;
@@ -38,6 +39,7 @@ int main(void) {
 	int **A;
 	int **B;
 	int **C;
+	int **D;
 	clock_t t0, tf;
 	float time;
 
@@ -45,26 +47,33 @@ int main(void) {
 	A = alloc(line);
 	B = alloc(line);
 	C = alloc(line);
+	D = alloc(line);
 
 	// values atribuition
 	A = atribuition(line,A);
 	B = atribuition(line,B);
 	C = matrixzero(line, C);
+	D = matrixzero(line, D);
 	
 	// print matrix A and B
 	print(line, A);
 	print(line, B);
 	
-	// A and B multiplication
+	// A and B Normal multiplication
 	t0 = clock();
 	C = multiplication(line, A, B);
 	tf = clock();
 
-	// print result and Elapsed Time
+	// A and B Blocks multiplication 
+	D = buildblock(line, A, B);
+
+	// print results and Elapsed Time
 	print(line, C);
-	printf("Elapsed Time: %d ms\n",(tf - t0) / (CLOCKS_PER_SEC / 1000));
+	print(line, D);
+	printf("Elapsed Time Normal Multiplication: %d ms\n",(tf - t0) / (CLOCKS_PER_SEC / 1000));
 	
 	system("pause");
+	
 	return 0;
 
 }

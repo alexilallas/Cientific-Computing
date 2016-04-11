@@ -281,7 +281,7 @@ int **buildblock(int line, int **matrix1, int **matrix2) {
 	time = (tf - t0) / (CLOCKS_PER_SEC / 1000);
 	// Call reborn() to join the blocks
 	result = reborn(line, result1, result2, result3, result4);
-	printf("Elapsed Time: %d ms\n",time);
+	printf("Elapsed Time Multiplication in Blocks: %d ms\n",time);
 
 	return result;
 }
