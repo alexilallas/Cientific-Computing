@@ -31,9 +31,9 @@ public class MultMatrix{
 		
 		// print the matrix A and B
 		System.out.println("Matrix A:");
-		//obj.print(A,loop);
+		obj.print(A,loop);
 		System.out.println("Matrix B:");
-		//obj.print(B,loop);
+		obj.print(B,loop);
 		
 		// Multiplication A and B
 		long start = System.currentTimeMillis();
@@ -42,20 +42,20 @@ public class MultMatrix{
 		System.out.println("\nElapsed Time for Normal Multiplication: "+elapsed+" ms\n");
 		
 		// print result
-		//obj.print(resultNormal, loop);
+		obj.print(resultNormal, loop);
 		
 		// Merge the matrix in Blocks and multiplies
 		Block obj2 = new Block();
 		int resultBlock[][] = obj2.MultiplicaBlock(loop, A, B);
 		
 		// print result
-		//obj.print(resultBlock, loop);
+		obj.print(resultBlock, loop);
 				
 		// Merge the matrix in Blocks and multiplies with Threads
 		int resultBlockThread[][] = obj2.MultiplicaBlockThread(loop, A, B);
 		
 		// print result
-		//obj.print(resultBlockThread, loop);
+		obj.print(resultBlockThread, loop);
 				
 	}
 	
