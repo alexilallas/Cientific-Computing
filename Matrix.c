@@ -30,7 +30,7 @@ int main(void) {
 	scanf_s("%d", &dimension);
 
 	// Work only with even number
-	if (dimension < 2 || dimension > 2000) {
+	if (dimension < 2 || dimension > 2000 || dimension%2 != 0) {
 	system("cls");
 	goto start;
 	}
@@ -56,7 +56,9 @@ int main(void) {
 	D = matrixzero(line, D);
 	
 	// print matrix A and B
+	printf("MATRIX A:\n");
 	print(line, A);
+	printf("MATRIX B:\n");
 	print(line, B);
 	
 	// A and B Normal multiplication
@@ -65,15 +67,16 @@ int main(void) {
 	tf = clock();
 
 	// A and B Blocks multiplication 
+	printf("\n\nBY BLOCKS:\n");
 	D = buildblock(line, A, B);
+	print(line, D);
+	printf("\n");
 
 	// print results and Elapsed Time
+	printf("\nNORMAL:");
+	printf("\nElapsed Time Normal Multiplication: %d ms\n", (tf - t0) / (CLOCKS_PER_SEC / 1000));
 	print(line, C);
-	print(line, D);
-	printf("Elapsed Time Normal Multiplication: %d ms\n",(tf - t0) / (CLOCKS_PER_SEC / 1000));
-	
-	system("pause");
-	
-	return 0;
 
+	system("pause");
+	return 0;
 }
